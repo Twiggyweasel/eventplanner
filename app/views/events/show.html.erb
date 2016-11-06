@@ -1,0 +1,231 @@
+<% render 'layouts/messages' %>
+
+
+<div class="row">
+  <!--<img src="https://placehold.it/1200x250/39BDBD/ffffff" class="img-fluid mx-auto d-block" >-->
+  <%= image_tag "mountain-wide.jpeg", class:'img-fluid mx-auto d-block', :style => 'max-height:250px' %>
+  
+</div>
+
+<div class='row mt-1'>
+  <div class='col-xs-8'>
+    <div class="card card-block item-square">
+    <div class="row pl-1">
+      
+      <h1><%= @event.name %></h1>
+      <h3>
+      <%= @event.event_date.strftime("%A, %B %d %Y") %>
+      </h3>
+    </div>
+    <div class='row mt-1 pl-1'>
+    <div class="btn-group">
+      <button type="button" class="btn btn-success btn-square dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Register
+      </button>
+      <div class="dropdown-menu">
+        <%= link_to 'Single Registration', new_attendee_path(:event => @event), class: "dropdown-item" %>
+        <%= link_to 'Team Registration', new_team_path(:event => @event), class: "dropdown-item" %>
+      </div>
+    </div>
+    <%= link_to 'Contribute', new_contribution_path(:event => @event), class: 'btn btn-warning btn-square' %> 
+    <ul class='nav navbar-nav float-xs-right pr-1'>
+      <li class='nav-item'><a class='nav-link'><i class='fa fa-facebook-square fa-2x social-icon' style='color:#3b5998;'></i></a></li>
+      <li class='nav-item'><a class='nav-link'><i class='fa fa-twitter-square fa-2x social-icon' style='color:#00aced;'></i></a></li>
+      <li class='nav-item'><a class='nav-link'><i class='fa fa-google-plus-square fa-2x social-icon' style='color:#dd4b39;'></i></a></li>
+      <li class='nav-item'><a class='nav-link'><i class='fa fa-reddit-square fa-2x social-icon' style='color:#FF5700;'></i></a></li>
+    </ul>
+    </div>
+    </div>
+
+    <div class="row my-3 px-1">
+      <div class="col-xs-4 text-xs-center">
+        <div class="card card-block card-callout mb-0">
+          <h1><%= @event.teams.count %></h1>
+          <p>Teams</p>
+        </div>
+      </div>
+      <div class="col-xs-4 text-xs-center">
+        <div class="card card-block card-callout mb-0">
+          <h1><%= @event.attendees.count %></h1>
+          <p>Participants</p>
+        </div>
+      </div>
+      <div class="col-xs-4 text-xs-center">
+        <div class="card card-block card-callout mb-0">
+          <h1><%= @event.contributions.count %></h1>
+          <p>Donations</p>
+        </div>
+      </div>
+    </div>
+    <div class='row px-1'>
+      <div class='card card-block item-square'>
+        <%= @event.desc.html_safe %>
+      </div>
+    </div>
+    <!--<div class='row mt-1 px-1'>-->
+    <!--  <div class="card">-->
+    <!--    <div class="card-header">-->
+    <!--      <ul class="nav nav-pills card-header-pills" role="tablist">-->
+    <!--        <li class="nav-item">-->
+    <!--          <a class="nav-link active" data-toggle="tab" href="#desc" role="tab">Description</a>-->
+    <!--        </li>-->
+    <!--        <li class="nav-item">-->
+    <!--          <a class="nav-link" href="#activity" data-toggle="tab" role="tab">Activies</a>-->
+    <!--        </li>-->
+    <!--      </ul>-->
+    <!--    </div>-->
+    <!--    <div class="card-block">-->
+    <!--      <div class="tab-content">-->
+    <!--        <div class="tab-pane active" id="desc" role="tabpanel">-->
+    <!--          <#%= @event.desc.html_safe %>-->
+    <!--        </div>-->
+    <!--        <div class="tab-pane" id="activity" role="tabpanel">-->
+  
+    <!--        </div>-->
+    <!--        <div class="tab-pane" id="messages" role="tabpanel">-->
+          
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</div>-->
+  </div>
+
+  
+  
+  <div class='col-xs-4 card-style'>
+
+    <div class="row py-1 px-1">
+      <h5>Achieved</h5>
+      <h3><%= number_to_currency(@event.raised) %></h3>
+      <progress class="progress progress-danger" value="<%= @event.percent_remaining %>" max="100"></progress>
+      <h4>Goal: <%= number_to_currency(@event.goal) %></h4>
+    </div>
+    <div class="row" style='background-color:#474747; color:white; padding-top: 8px; padding-bottom: 5px;'>
+      <h4 class='px-1'><i class='fa fa-group'></i> Top Teams</h4>
+    </div>
+    <div class='row'>
+      <ul class="list-unstyled pl-1 pt-1">
+        <li><strong>Team Kaityln:</strong> $1,255.14</li>
+        <li><strong>Tanner's Team:</strong> $350.00</li>
+        <li><strong>Team Ethan Robert:</strong> $349.00</li>
+        <li><strong>Noley Poley:</strong> $53.00</li>
+      </ul>
+    </div>
+    <div class="row" style='background-color:#474747; color:white; padding-top: 8px; padding-bottom: 5px;'>
+      <h4 class='px-1'><i class='fa fa-user'></i> Top Fundraisers</h4>
+    </div>
+    <div class='row'>
+      <ul class="list-unstyled pl-1 pt-1">
+        <li><strong>Carrie Wylie</strong> $1,105.14</li>
+        <li><strong> Sherry Clark</strong> $240.00</li>
+        <li><strong>Kim Cox</strong> $100.00</li>
+      </ul>
+    </div>
+    <div class="row" style='background-color:#474747; color:white; padding-top: 8px; padding-bottom: 5px;'>
+      <h4 class='px-1'><i class='fa fa-map-marker'></i> Event Location</h4>
+    </div>
+    <div class='row'>
+      <div class="embed-responsive embed-responsive-4by3">
+      <iframe class='embed-responsive-item' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.552581980637!2d-89.99891408429679!3d35.14283728032352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x887f80a6bc0ee00f%3A0x70a1a47ed7781528!2sOverton+Park+Conservancy!5e0!3m2!1sen!2sus!4v1477881559446" width="375" height="250" frameborder="0" style="border:1" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class='row pl-1 pt-1'>
+      <h3><%= @event.venue_name %></h3>
+      <p><%= @event.street %> <%= @event.city %>, <%= @event.state %> <%= @event.zip %></p>
+    </div>
+
+  </div>
+</div>
+
+
+<!--<div class="row" style="border-bottom:1px solid black">-->
+<!--  <div class="col-xs-3 text-xs-center">-->
+<!--    <h1>7</h1>-->
+<!--    <p>Teams</p>-->
+<!--  </div>-->
+<!--  <div class="col-xs-3 text-xs-center">-->
+<!--    <h1>57</h1>-->
+<!--    <p>Participants</p>-->
+<!--  </div>-->
+<!--  <div class="col-xs-3 text-xs-center">-->
+<!--    <h1>51</h1>-->
+<!--    <p># of Donations</p>-->
+<!--  </div>-->
+<!--  <div class="col-xs-3 text-xs-center">-->
+<!--    <h1>$300</h1>-->
+<!--    <p>Highest Donation</p>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--  <%= @event.desc.html_safe %>-->
+<!--</div>-->
+
+<!--<p>-->
+<!--  <strong>Name:</strong>-->
+<!--  <%= @event.name %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Desc:</strong>-->
+<!--  <%= @event.desc %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Event date:</strong>-->
+<!--  <%= @event.event_date %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Event time:</strong>-->
+<!--  <%= @event.event_time %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Street:</strong>-->
+<!--  <%= @event.street %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>City:</strong>-->
+<!--  <%= @event.city %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>State:</strong>-->
+<!--  <%= @event.state %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Zip:</strong>-->
+<!--  <%= @event.zip %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Registration start:</strong>-->
+<!--  <%= @event.registration_start %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Fee adult:</strong>-->
+<!--  <%= @event.fee_adult %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Fee child:</strong>-->
+<!--  <%= @event.fee_child %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Fee other:</strong>-->
+<!--  <%= @event.fee_other %>-->
+<!--</p>-->
+
+<!--<h2>Coupons</h2>-->
+<!--<ul>-->
+<!--  <% @event.coupons.each do |c| %>-->
+<!--  <ul><%= c.name %> - <%= number_to_percentage(c.discount) %></ul>-->
+<!--  <% end %>-->
+<!--</ul>-->
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

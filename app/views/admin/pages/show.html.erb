@@ -1,0 +1,73 @@
+<div class='row'>
+    <div class='col-xs-12'><h1>Dashboard</small></h1></div>
+</div>
+
+<div class='row'>
+    <div class='col-xs-6'>
+        <div class='card card-block card-square'>
+            <%= pie_chart Event.group(:name).count %>
+        </div>
+    </div>
+    <div class='col-xs-6'>
+        <div class='card card-block card-square'>
+            <%= line_chart Event.group(:name).count %>
+        </div>
+    </div>
+    
+</div>
+<div class='row'>
+    <div class='col-xs-3 text-xs-center'>
+        <div class='card card-block square-item'>
+            <h3>350 <br/> <small class='text-muted'>Total Attendees</small></h3>
+        </div>
+    </div>
+    <div class='col-xs-3 text-xs-center'>
+        <div class='card card-block square-item'>
+            <h3>$3,5000,000 <br/> <small class='text-muted'>Total Raised</small></h3>
+        </div>
+    </div>
+    <div class='col-xs-3 text-xs-center'>
+        <div class='card card-block square-item'>
+            <h3>5 <br/> <small class='text-muted'>Total Events</small></h3>
+        </div>
+    </div>
+    <div class='col-xs-3 text-xs-center'>
+        <div class='card card-block square-item'>
+            <h3>700 <br/> <small class='text-muted'>Dreams Coming True</small></h3>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class='col-xs-12'>
+        <h2>Active Events</h2>
+    </div>
+</div>
+<div class='row'>
+    <% if @org.events.count > 0 %>
+    
+    <% @org.events.each do |event| %>
+    <div class='col-md-4'>
+        <div class='card'>
+            <%= image_tag 'mountain-wide', class: 'img-fluid' %>
+            <div class='card-block'>
+                <h3 class='card-title'><%= event.name %></h3>
+                <%= link_to "Manage", admin_event_path(event), class: 'btn btn-primary btn-square' %><a href='#' class='btn btn-danger btn-square ml-1'>delete</a>
+            </div>
+        </div>
+    </div>
+    <% end %>
+    <% else %>
+        <div class='col-md-4'>
+            <div class='card card-block'>
+                <h3 class='card-title'>You have no upcoming events</h3>
+                <p>Schedule one today!</p>
+                <a href='#' class='btn btn-success btn-square'>Create Event</a>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+
+
+
+

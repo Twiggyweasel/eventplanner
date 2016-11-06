@@ -1,0 +1,93 @@
+<%= tinymce_assets %>
+<%= tinymce %>
+
+<%= form_for(event) do |f| %>
+  <% if event.errors.any? %>
+    <%= render "shared/errors", errors: event.errors %>
+    <!--<div id="error_explanation">-->
+    <!--  <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>-->
+
+    <!--  <ul>-->
+    <!--  <% event.errors.full_messages.each do |message| %>-->
+    <!--    <li><%= message %></li>-->
+    <!--  <% end %>-->
+    <!--  </ul>-->
+    <!--</div>-->
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Event Name" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :desc, "Event Summary" %>
+    <%= f.text_area :desc, :class => "tinymce", :row => 350, :cols => 120 %>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <%= f.label :event_date %>
+      <%= f.date_field :event_date, class: "form-control" %>
+    </div>
+  
+    <div class="col-xs-4">
+      <%= f.label :event_time %>
+      <%= f.time_field :event_time, class: 'form-control' %>
+    </div>
+    
+    <div class="col-xs-4">
+    <%= f.label :registration_start %>
+    <%= f.date_field :registration_start, class: 'form-control' %>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <%= f.label :venue_name %>
+      <%= f.text_field :venue_name, class: 'form-control' %>
+    </div>
+    <div class="col-xs-6">
+      <%= f.label :street %>
+      <%= f.text_field :street, class: 'form-control' %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="col-xs-4">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: 'form-control' %>
+    </div>
+  
+    <div class="col-xs-4">
+      <%= f.label :state %>
+      <%= f.text_field :state, class: 'form-control' %>
+    </div>
+  
+    <div class="col-xs-4">
+      <%= f.label :zip %>
+      <%= f.text_field :zip, class: 'form-control' %>
+    </div>
+  </div>
+  
+  
+  <div class='row'>
+    <div class="col-xs-4">
+      <%= f.label :fee_adult %>
+      <%= f.text_field :fee_adult, class: 'form-control' %>
+    </div>
+
+    <div class="col-xs-4">
+      <%= f.label :fee_child %>
+      <%= f.text_field :fee_child, class: 'form-control' %>
+    </div>
+  
+    <div class="col-xs-4">
+      <%= f.label :fee_other %>
+      <%= f.number_field :fee_other, class: 'form-control' %>
+    </div>
+  </div>
+  <%= f.label :goal %>
+  <%= f.number_field :goal, class: 'form_control' %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

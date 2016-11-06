@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event Manager</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render "shared/nav" %>
+    <div class="container-fluid pl-0" id='main-container'>
+      <div class='col-md-2' id='sidebar'>
+            <%= render 'shared/sidebar', org: @org %>
+        </div>
+        <div class='col-md-10 pl-2'>
+          <%= render "layouts/messages" %>
+          <%= yield %>
+        </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<div class='row'>
+    <div class='col-xs-12'>
+        <h2><%= @event.name %></h2>
+    </div>
+</div>
+<div class='row'>
+    <div class='col-md-6'>
+        <div class='card card-block item-square'>
+            <%= @event.desc.html_safe %>
+        </div>
+    </div>
+    <div class='col-md-6'>
+         <div class='card card-block item-square'>
+            <h3 class='card-title'>Event Goal</h3>
+            <h4>Progress: <%= number_to_percentage(@event.percent_remaining) %></h4>
+            <progress class="progress progress-danger" value="<%= @event.percent_remaining %>" max="100"></progress>
+            <h4><%= number_to_currency(@event.goal) %></h4>
+        </div>
+        <div class='card card-block item-square'>
+            <h3 class='card-title'>Event Activies</h3>
+            <a href='#' class='btn btn-primary btn-square'>Add New</a>
+        </div>
+        <div class='card card-block item-square'>
+            <h3 class='card-title'>Event Prizes</h3>
+            <a href='#' class='btn btn-primary btn-square'>Add New</a>
+        </div>
+    </div>
+</div>

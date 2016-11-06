@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  desc: MyText
+  event_date: 2016-10-29
+  event_time: 2016-10-29 17:15:01
+  street: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  registration_start: 2016-10-29
+  fee_adult: 9.99
+  fee_child: 9.99
+  fee_other: 9.99
+
+two:
+  name: MyString
+  desc: MyText
+  event_date: 2016-10-29
+  event_time: 2016-10-29 17:15:01
+  street: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  registration_start: 2016-10-29
+  fee_adult: 9.99
+  fee_child: 9.99
+  fee_other: 9.99
