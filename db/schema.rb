@@ -10,31 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161105005313) do
+ActiveRecord::Schema.define(version: 20161106021839) do
 
   create_table "attendees", force: :cascade do |t|
-    t.string  "name"
-    t.integer "entry_fee"
-    t.integer "team_id"
+    t.string   "name"
+    t.integer  "entry_fee"
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_attendees_on_team_id"
   end
 
   create_table "contributions", force: :cascade do |t|
-    t.float   "amount"
-    t.text    "comment"
-    t.boolean "paid"
-    t.integer "event_id"
+    t.float    "amount"
+    t.text     "comment"
+    t.boolean  "paid"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_contributions_on_event_id"
   end
 
   create_table "coupons", force: :cascade do |t|
-    t.string  "name"
-    t.string  "code"
-    t.date    "expiration"
-    t.date    "start"
-    t.float   "discount"
-    t.boolean "active",     default: true
-    t.integer "event_id"
+    t.string   "name"
+    t.string   "code"
+    t.date     "expiration"
+    t.date     "start"
+    t.float    "discount"
+    t.boolean  "active",     default: true
+    t.integer  "event_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["event_id"], name: "index_coupons_on_event_id"
   end
 
@@ -69,10 +75,22 @@ ActiveRecord::Schema.define(version: 20161105005313) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string  "name"
-    t.integer "member_limit"
-    t.integer "event_id"
+    t.string   "name"
+    t.integer  "member_limit"
+    t.integer  "event_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["event_id"], name: "index_teams_on_event_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.boolean  "admin",           default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
 end

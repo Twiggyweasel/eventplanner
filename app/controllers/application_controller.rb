@@ -9,11 +9,13 @@ class ApplicationController < ActionController::Base
   end
   
   def logged_in?
-    true
+    !!current_user
   end
   
   def is_admin?
-    true
+    if logged_in?
+      current_user.admin?
+    end
   end
   
   def require_user

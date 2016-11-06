@@ -4,6 +4,8 @@ class CreateAttendees < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :entry_fee
       t.references :team, foreign_key: true
+      
+      t.timestamps
     end
   end
 end

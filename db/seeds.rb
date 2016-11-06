@@ -7,6 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+User.create! email: 'orsusbass@gmail.com', password: 'test1234', first_name: 'Richard', last_name: "Wise", admin: true
+User.create! email: 'quesarahsarah92@gmail.com', password: 'test1234', first_name: 'Sarah', last_name: "Wise", admin: false
+
+
 Organization.create! name: 'NF Network', tagline: 'Leading NF Advocacy Building NF Community'
 Organization.create! name: 'TwiggyStudios', tagline: 'Enter Player Two!'
 

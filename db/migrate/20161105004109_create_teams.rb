@@ -4,6 +4,8 @@ class CreateTeams < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :member_limit
       t.references :event, foreign_key: true
+      
+      t.timestamps
     end
   end
 end

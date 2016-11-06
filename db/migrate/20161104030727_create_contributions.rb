@@ -5,6 +5,8 @@ class CreateContributions < ActiveRecord::Migration[5.0]
       t.text :comment
       t.boolean :paid
       t.references :event, foreign_key: true
+      
+      t.timestamps
     end
   end
 end

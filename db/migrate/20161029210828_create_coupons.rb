@@ -8,6 +8,8 @@ class CreateCoupons < ActiveRecord::Migration[5.0]
       t.float :discount
       t.boolean :active, default: true
       t.references :event, foreign_key: true
+      
+      t.timestamps
     end
   end
 end

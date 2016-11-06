@@ -1,0 +1,47 @@
+<%= form_for(user) do |f| %>
+  <% if user.errors.any? %>
+    <%= render "shared/errors", errors: user.errors %>
+  <% end %>
+  
+  
+  <div class='col-md-6 offset-md-3 mt-1'>
+      <div class='card card-block'>
+          <div class='row my-1'>
+              <div class='col-xs-12'>
+                  <%= f.label :email %>
+                  <%= f.email_field :email, class: "form-control" %>
+              </div>
+          </div>
+          
+          <div class='row my-1'>
+              <div class='col-xs-12'>
+                  <%= f.label :password %>
+                  <%= f.password_field :password, class: "form-control" %>
+              </div>
+          </div>
+          <div class='row my-1'>
+              <div class='col-xs-12'>
+                  <%= f.label :first_name %>
+                  <%= f.text_field :first_name, class: "form-control" %>
+              </div>
+          </div>
+          <div class='row my-1'>
+              <div class='col-xs-12'>
+                  <%= f.label :last_name %>
+                  <%= f.text_field :last_name, class: "form-control" %>
+              </div>
+          </div>
+
+          <div class='row my-1'>
+              <div class='col-xs-12 mb-1'>
+                  <%= f.submit 'Create Account', class: 'btn btn-success btn-square btn-block' %>
+          </div>
+              <div class='col-xs-12'>
+                  <%= link_to 'Cancel', :back, class: 'btn btn-danger btn-square btn-block' %>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  
+<% end %>  
